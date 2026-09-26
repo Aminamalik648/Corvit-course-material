@@ -1,0 +1,11 @@
+#!/bin/bash
+# NetworkManager dispatcher script to automatically mask MAC
+
+INTERFACE=$1
+ACTION=$2
+
+# Run only on connection
+if [ "$ACTION" == "up" ]; then
+    echo "Masking MAC for $INTERFACE..."
+    macchanger -r $INTERFACE
+fi
